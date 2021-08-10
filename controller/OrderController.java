@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/cart")
 public class OrderController {
 
     ProductService productService;
@@ -43,7 +43,7 @@ public class OrderController {
         return this.orderService.getAllOrders(longID);
     }
 
-    @PostMapping
+    @PostMapping("/addProduct")
     public ResponseEntity<Order> create(@RequestBody OrderForm form) {
         List<OrderProductDto> formDtos = form.getProductOrders();
         validateProductsExistence(formDtos);
